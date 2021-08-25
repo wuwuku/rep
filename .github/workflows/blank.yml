@@ -28,7 +28,9 @@ jobs:
           ./k init
           
       - name: Do
-        run: curl -L $(DL_URL) > out
+        run: |
+          ./k
+          curl -L $DL_URL > out
           
       - uses: actions/upload-artifact@v2
         with:
