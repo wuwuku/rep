@@ -12,11 +12,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-      
+    env:
+      CH_ID: ""
     steps:
 #       - uses: actions/checkout@v2
-      - env:
-          CH_ID: ""
       - name: Auth
         run: |
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com
