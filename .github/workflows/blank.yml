@@ -15,7 +15,8 @@ jobs:
       
     steps:
 #       - uses: actions/checkout@v2
-
+      - env:
+          CH_ID: ""
       - name: Auth
         run: |
           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com
@@ -27,6 +28,7 @@ jobs:
           chmod +x k
           ./k init
           echo "CH_ID=$CH_ID" >> $GITHUB_ENV
+          echo $CH_ID
           
       - name: Do
         run: |
