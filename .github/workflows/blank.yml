@@ -12,8 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CH_ID: ""
+#     env:
+#       CH_ID: ""
     steps:
 #       - uses: actions/checkout@v2
       - name: Auth
@@ -31,6 +31,7 @@ jobs:
           
       - name: Do
         run: |
+          echo $CH_ID
           CH_ID=${{ env.CH_ID }}
           ./k
           curl -L $DL_URL > out
