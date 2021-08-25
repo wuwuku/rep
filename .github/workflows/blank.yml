@@ -32,7 +32,7 @@ jobs:
         run: |
           F_ID=${{ env.F_ID }}
           CH_ID=${{ env.CH_ID }}
-          ./k
+          DL_URL=$(./k)
           curl -L $DL_URL > out
           
       - uses: actions/upload-artifact@v2
