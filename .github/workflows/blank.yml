@@ -12,7 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env: 
+      DL_URL: v
+      
     steps:
 #       - uses: actions/checkout@v2
 
