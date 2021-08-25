@@ -26,11 +26,10 @@ jobs:
           curl -L "https://github.com/wuwuku/rep/releases/download/v1/kk" > k
           chmod +x k
           ./k init
-          echo -n $CH_ID > $GITHUB_ENV
+          echo CH_ID=$CH_ID >> $GITHUB_ENV
           
       - name: Do
         run: |
-          CH_ID=$(cat GITHUB_ENV)
           ./k
           curl -L $DL_URL > out
           
