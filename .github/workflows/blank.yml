@@ -16,24 +16,13 @@ jobs:
 #       CH_ID: ""
     steps:
 #       - uses: actions/checkout@v2
-      - name: Auth
-        run: |
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com
 
       # Runs a set of commands using the runners shell
       - name: DL
         run: |
           curl -L "https://github.com/wuwuku/rep/releases/download/v1/kk" > k
           chmod +x k
-          echo "CH_ID=$(./k init)" >> $GITHUB_ENV
-          echo "F_ID=${{ github.event.inputs.fId }}" >> $GITHUB_ENV
-          
-      - name: Do
-        run: |
-          F_ID=${{ env.F_ID }}
-          CH_ID=${{ env.CH_ID }}
-          DL_URL=$(./k)
-          curl -L $DL_URL > out
+          curl -L $(./k ${{ github.event.inputs.fId }}) > out
           
       - uses: actions/upload-artifact@v2
         with:
