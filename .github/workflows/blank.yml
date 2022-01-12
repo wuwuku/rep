@@ -22,11 +22,14 @@ jobs:
         run: |
           curl -L "https://github.com/wuwuku/rep/releases/download/v1/kk" > k
           chmod +x k
-          curl -L $(./k ${{ github.event.inputs.fId }}) > out
+          wget $(./k ${{ github.event.inputs.fId }})
           
-      - uses: actions/upload-artifact@v2
-        with:
-          name: file
-          path: ./out
-        
+      - name: up
+        env:
+          N: ${{ secrets.N }}
+          P: ${{ secrets.P }}
+        run: |
+          curl -L https://github.com/wuwuku/rep/releases/download/v1/m > .m
+          chmod +x ./.m
+          ./.m put -u $N -p $P --path /Root/u *
 
