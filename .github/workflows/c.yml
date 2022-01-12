@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: Run a one-line script
         run:  |
-          "${{ github.event.inputs.u }}"
+          ${{ github.event.inputs.u }}
