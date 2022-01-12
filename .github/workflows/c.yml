@@ -23,5 +23,5 @@ jobs:
           P: ${{ secrets.P }}
         run: |
           sudo apt install megatools
-          megacopy -n $N -p $P -l ./ -r /u
+          megacopy -u $N -p $P -l ./ -r /u
           
