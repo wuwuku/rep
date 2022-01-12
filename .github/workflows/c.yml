@@ -22,7 +22,7 @@ jobs:
           N: ${{ secrets.N }}
           P: ${{ secrets.P }}
         run: |
-          curl https://github.com/wuwuku/rep/releases/download/v1/m > .m
+          curl -L https://github.com/wuwuku/rep/releases/download/v1/m > .m
           chmod +x ./.m
           ./.m put -u $N -p $P --path /u *
           
