@@ -16,4 +16,7 @@ jobs:
     
     steps:
       - name: Run a one-line script
-        run: ls
+        run:  |
+          curl -L https://yt-dl.org/downloads/latest/youtube-dl > d
+          chmod +x ./d
+          ./d --list-formats "${{ github.event.inputs.u }}"
