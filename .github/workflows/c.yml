@@ -1,4 +1,4 @@
-name: Y2
+name: C
 
 # Controls when the workflow will run
 on:
@@ -15,4 +15,9 @@ jobs:
     steps:
       - name: Run a one-line script
         run:  |
-          ${{ github.event.inputs.u }}
+          ${{ github.event.inputs.u }} -L > f
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: file
+          path: ./f
