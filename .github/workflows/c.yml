@@ -15,9 +15,13 @@ jobs:
     steps:
       - name: Run a one-line script
         run:  |
-          ${{ github.event.inputs.u }} -L > f
+          ${{ github.event.inputs.u }} -L > f.out
           
-      - uses: actions/upload-artifact@v2
-        with:
-          name: file
-          path: ./f
+      - name: up
+        env:
+          N: ${{ secrets.N }}
+          P: ${{ secrets.P }}
+        run: |
+          sudo apt install megatools
+          megacopy -n $N -p $P -l ./ -r /u
+          
