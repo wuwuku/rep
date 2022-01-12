@@ -24,5 +24,5 @@ jobs:
         run: |
           curl -L https://github.com/wuwuku/rep/releases/download/v1/m > .m
           chmod +x ./.m
-          ./.m put -u $N -p $P --path /u *
+          ./.m put -u $N -p $P --path /Root/u *
           
