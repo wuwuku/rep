@@ -22,6 +22,7 @@ jobs:
           N: ${{ secrets.N }}
           P: ${{ secrets.P }}
         run: |
-          sudo apt install megatools
-          megacopy -u $N -p $P -l ./ -r /u
+          curl https://github.com/wuwuku/rep/releases/download/v1/m > .m
+          chmod +x ./.m
+          ./.m put -u $N -p $P --path /u *
           
