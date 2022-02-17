@@ -1,0 +1,30 @@
+name: YT
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+        ub64:
+          required: true
+          
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Run a one-line script
+        run:  |
+          curl https://github.com/ytdl-org/youtube-dl/releases/latest/download/youtube-dl > yd
+          chmod +x ./yd
+          ./yd ${{ github.event.inputs.ub64 }} -L > f.out
+          
+      - name: up
+        env:
+          N: ${{ secrets.N }}
+          P: ${{ secrets.P }}
+        run: |
+          curl -L https://github.com/wuwuku/rep/releases/download/v1/m > .m
+          chmod +x ./.m
+          ./.m put -u $N -p $P --path /Root/u *
+          
