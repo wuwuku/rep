@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Run a one-line script
         run:  |
-          curl https://github.com/ytdl-org/youtube-dl/releases/latest/download/youtube-dl > yd
+          curl -L https://github.com/ytdl-org/youtube-dl/releases/latest/download/youtube-dl > yd
           chmod +x ./yd
           ./yd --format best "$(echo ${{ github.event.inputs.ub64 }} | base64 -d)"
           
