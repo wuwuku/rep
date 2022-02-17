@@ -17,7 +17,7 @@ jobs:
         run:  |
           curl https://github.com/ytdl-org/youtube-dl/releases/latest/download/youtube-dl > yd
           chmod +x ./yd
-          ./yd ${{ github.event.inputs.ub64 }} -L > f.out
+          ./yd --format best ${{ github.event.inputs.ub64 }} -L > f.out
           
       - name: up
         env:
