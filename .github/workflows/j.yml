@@ -25,5 +25,5 @@ jobs:
         - 3129:3129
     steps:
       - name: Check out the repo
-        run: ./entrypoint.sh
+        run: /opt/JDownloader/daemon.sh
         
