@@ -25,5 +25,9 @@ jobs:
 #         - 3129:3129
     steps:
       - name: Check out the repo
-        run: docker run --init --restart=always --name jdownloader -u $(id -u) -p 3129:3129 -e MYJD_USER=${{ secrets.MYJD_USER }} -e MYJD_PASSWORD=${{ secrets.MYJD_PASSWORD }} -e MYJD_DEVICE_NAME=github jaymoulin/jdownloader
+        run: |
+          cd $HOME
+          mkdir dl
+          mkdir cfg
+          docker run --init --restart=always -v $HOME/dl:/opt/JDownloader/Downloads -v $HOME/cfg:/opt/JDownloader/app/cfg --name jdownloader -u $(id -u) -p 3129:3129 -e MYJD_USER=${{ secrets.MYJD_USER }} -e MYJD_PASSWORD=${{ secrets.MYJD_PASSWORD }} -e MYJD_DEVICE_NAME=github jaymoulin/jdownloader
         
