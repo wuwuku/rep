@@ -7,22 +7,21 @@ on:
     inputs:
       fId:
         required: true
-    
+      cuOpt:
+        required: false
+        default: "-O -J"
 
 jobs:
   build:
     runs-on: ubuntu-latest
-#     env:
-#       CH_ID: ""
     steps:
-#       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
       - name: DL
         run: |
           curl -L "https://github.com/wuwuku/rep/releases/download/v1/kk" > k
           chmod +x k
-          curl -L -O -J $(./k ${{ github.event.inputs.fId }})
+          curl -L ${{github.event.inputs.cuOpt}} $(./k ${{ github.event.inputs.fId }})
           
       - name: up
         env:
